@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders (
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    order_id VARCHAR UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(10) NOT NULL,
+    totalcost NUMERIC(10,2)
+);
