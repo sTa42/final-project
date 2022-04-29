@@ -24,7 +24,7 @@ exports.getUserInfoByEmail = (email) => {
 
 exports.getProductsBySearch = (searchTerm) => {
     return db.query(`SELECT * FROM products WHERE (name ILIKE $1);`, [
-        searchTerm + "%",
+        "%" + searchTerm + "%",
     ]);
 };
 exports.addProduct = (name, description, price) => {
@@ -32,6 +32,10 @@ exports.addProduct = (name, description, price) => {
         `INSERT INTO products (name, description, price) VALUES ($1, $2, $3)`,
         [name, description, price]
     );
+};
+
+exports.getRandomProducts = () => {
+    return db.query(`SELECT * FROM products ORDER BY RANDOM() LIMIT 4`);
 };
 exports.getAllProducts = () => {
     return db.query(`SELECT * FROM products;`);
