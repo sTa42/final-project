@@ -5,7 +5,8 @@ import { receiveUser } from "./redux/user/slice";
 import SearchBar from "./searchbar";
 import FeaturedProducts from "./featuredproducts";
 import ProductPage from "./productpage";
-import Orders from "./orders";
+import Orders from "./orders_overview";
+import OrderDetailed from "./order_detail";
 import SearchResult from "./searchresult";
 export default function App() {
     const dispatch = useDispatch();
@@ -47,6 +48,9 @@ export default function App() {
                     </Route>
                     <Route exact path={"/orders"}>
                         <Orders />
+                    </Route>
+                    <Route exact path={"/order/:id"}>
+                        <OrderDetailed />
                     </Route>
                 </BrowserRouter>
             </div>

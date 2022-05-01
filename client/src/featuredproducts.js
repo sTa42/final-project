@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import AddToCartButton from "./addtocartbutton";
 
 export default function FeaturedProducts() {
     const history = useHistory();
@@ -33,6 +34,7 @@ export default function FeaturedProducts() {
                                 }}
                             >
                                 {product.name}
+                                <AddToCartButton id={product.id} />
                             </div>
                         );
                     })}

@@ -43,3 +43,34 @@ exports.getAllProducts = () => {
 exports.getProductDataById = (id) => {
     return db.query(`SELECT * FROM products WHERE id = $1`, [id]);
 };
+
+exports.getAllOrdersForUser = (id) => {
+    return db.query(
+        `SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC;`,
+        [id]
+    );
+};
+exports.getOrderContent = (id) => {
+    return db.query(
+        `SELECT products.name, products.price, products.id, orders_content.amount, products.picture_url 
+        FROM orders_content 
+        JOIN products 
+        ON orders_content.item_id = products.id 
+        WHERE orders_content.order_id = $1;`,
+        [id]
+    );
+};
+exports.getOrder = (order_id, user_id) => {
+    return db.query(
+        `SELECT * FROM orders WHERE order_id = $1 AND user_id = $2;`,
+        [order_id, user_id]
+    );
+};
+exports.updateTotalCostInOrders = (orderId, cost) => {
+    return db.query(
+        `UPDATE orders 
+        SET totalcost = $2 
+        WHERE order_id = $1 RETURNING *;`,
+        [orderId, cost]
+    );
+};

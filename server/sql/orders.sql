@@ -6,3 +6,10 @@ CREATE TABLE orders (
     status VARCHAR(10) NOT NULL,
     totalcost NUMERIC(10,2)
 );
+
+
+
+
+INSERT INTO orders (user_id, order_id, status, totalcost) VALUES (21, '1', 'ORDERED', 74.93);
+INSERT INTO orders (user_id, order_id, status, totalcost) VALUES (21, '2', 'ORDERED', 142.43);
+INSERT INTO orders (user_id, order_id, status, totalcost) VALUES (21, '3', 'ORDERED', 500.13);
