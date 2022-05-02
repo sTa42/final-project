@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
-import { addToCart } from "./redux/cart/slice";
+import { increaseAmount } from "./redux/cart/slice";
 
-export default function AddToCartButton(props) {
+export default function IncreaseAmountButton(props) {
     const dispatch = useDispatch();
 
-    console.log("PROPS FROM THE BUTTON: ", props);
-    const addToCartClickHandler = (e) => {
+    console.log("PROPS FROM Increase BUTTON: ", props);
+    const increaseClickHandler = (e) => {
         e.stopPropagation();
-        dispatch(addToCart(props.id));
+        dispatch(increaseAmount(props.id));
         // fetch(`/api/v1/cart/additem`, {
         //     method: "POST",
         //     headers: { "Content-Type": "application/json" },
@@ -25,5 +25,5 @@ export default function AddToCartButton(props) {
         //         console.log("ERROR POSTING ITEM TO CART: ", err);
         //     });
     };
-    return <button onClick={addToCartClickHandler}>Add To Cart</button>;
+    return <button onClick={increaseClickHandler}>Add one</button>;
 }

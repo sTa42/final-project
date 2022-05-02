@@ -55,8 +55,10 @@ export default function SearchBar() {
             />
             <button
                 onClick={() => {
-                    history.replace(`/product/search/${search}`);
-                    setSearch("");
+                    if (search.length > 0) {
+                        history.replace(`/product/search/${search}`);
+                        setSearch("");
+                    }
                 }}
             >
                 Go To Search Result

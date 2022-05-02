@@ -39,10 +39,24 @@ router.get("/search/:search.json", async (req, res) => {
     }
 });
 router.get("/:id.json", async (req, res) => {
-    const {
-        rows: [product],
-    } = await getProductDataById(req.params.id);
-    res.json({ success: true, product });
+    console.log(req.params);
+    if (req.params.id.length != 0 && !isNaN(req.params.id)) {
+        try {
+            const {
+                rows: [product],
+            } = await getProductDataById(req.params.id);
+            if (product) {
+                res.json({ success: true, product });
+            } else {
+                res.json({ success: false, message: "does not exist" });
+            }
+        } catch (err) {
+            console.log("ERROR GETTING PRODUCT BY ID FROM DB: ", err);
+            res.json({ success: false, message: "error" });
+        }
+    } else {
+        res.json({ success: false, message: "no input" });
+    }
 });
 
 module.exports = router;

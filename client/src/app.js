@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {
+    BrowserRouter,
+    Route,
+    Switch,
+    useHistory,
+    Link,
+} from "react-router-dom";
 import { receiveUser } from "./redux/user/slice";
+import { receiveCart } from "./redux/cart/slice";
+
 import SearchBar from "./searchbar";
 import FeaturedProducts from "./featuredproducts";
 import ProductPage from "./productpage";
@@ -13,19 +21,22 @@ export default function App() {
     const user = useSelector((state) => state.userReducer);
     useEffect(() => {
         dispatch(receiveUser());
+        dispatch(receiveCart());
     }, []);
     return (
         <>
             <div>
                 <BrowserRouter>
                     <header>
+                        <Link to={"/"}>Go Start Page</Link>
                         <img
                             src={"/Nozama-logos_black.png"}
                             width={200}
                             height={100}
                             style={{ objectFit: "cover" }}
                         ></img>
-                        <SearchBar />, User Icon, Cart
+                        <SearchBar />, <Link to={"/orders"}>USER</Link>
+                        Icon, Cart
                     </header>
 
                     <Route exact path={"/"}>

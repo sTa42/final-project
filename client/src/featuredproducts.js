@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import AddToCartButton from "./addtocartbutton";
+import ProductListing from "./productlisting";
 
 export default function FeaturedProducts() {
-    const history = useHistory();
+    // const history = useHistory();
     const [featuredProducts, setFeaturedProducts] = useState([]);
 
     useEffect(() => {
@@ -26,16 +27,21 @@ export default function FeaturedProducts() {
                 <>
                     {featuredProducts.map((product) => {
                         return (
-                            <div
+                            // <div
+                            //     key={product.id}
+                            //     className={"searchResult"}
+                            //     onClick={() => {
+                            //         history.replace(`/product/${product.id}`);
+                            //     }}
+                            // >
+                            //     {product.name}
+                            //     <AddToCartButton id={product.id} />
+                            // </div>
+                            <ProductListing
                                 key={product.id}
-                                className={"searchResult"}
-                                onClick={() => {
-                                    history.replace(`/product/${product.id}`);
-                                }}
-                            >
-                                {product.name}
-                                <AddToCartButton id={product.id} />
-                            </div>
+                                id={product.id}
+                                name={product.name}
+                            />
                         );
                     })}
                 </>

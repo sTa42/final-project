@@ -43,6 +43,9 @@ exports.getAllProducts = () => {
 exports.getProductDataById = (id) => {
     return db.query(`SELECT * FROM products WHERE id = $1`, [id]);
 };
+exports.getProductPriceDataById = (id) => {
+    return db.query(`SELECT price, id FROM products WHERE id = $1`, [id]);
+};
 
 exports.getAllOrdersForUser = (id) => {
     return db.query(
@@ -72,5 +75,23 @@ exports.updateTotalCostInOrders = (orderId, cost) => {
         SET totalcost = $2 
         WHERE order_id = $1 RETURNING *;`,
         [orderId, cost]
+    );
+};
+exports.createOrder = (order_id, user_id) => {
+    return db.query(
+        `INSERT INTO orders (order_id, user_id, status) VALUES ($1, $2, 'ORDERED') RETURNING *`,
+        [order_id, user_id]
+    );
+};
+exports.updateOrderWithPrice = (order_id, totalcost) => {
+    return db.query(`UPDATE orders SET totalcost = $2 WHERE order_id = $1;`, [
+        order_id,
+        totalcost,
+    ]);
+};
+exports.createOrdersContentEntryForOrder = (order_id, item_id, amount) => {
+    return db.query(
+        `INSERT INTO orders_content (order_id, item_id, amount) VALUES ($1, $2, $3) RETURNING *`,
+        [order_id, item_id, amount]
     );
 };

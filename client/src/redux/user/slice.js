@@ -1,4 +1,4 @@
-export default function userReducer(user = null, action) {
+export default function userReducer(user = Object, action) {
     if (action.type == "user/received") {
         user = action.payload;
     }
@@ -6,10 +6,14 @@ export default function userReducer(user = null, action) {
 }
 export function receiveUser() {
     return async (dispatch) => {
-        const response = await fetch("/api/v1/user/user.json");
-        const data = await response.json();
-        if (data.success) {
-            dispatch({ type: "user/received", payload: data.user });
+        try {
+            const response = await fetch("/api/v1/user/user.json");
+            const data = await response.json();
+            if (data.success) {
+                dispatch({ type: "user/received", payload: data.user });
+            }
+        } catch (err) {
+            console.log("ERROR FETCHING USER DATA: ", err);
         }
     };
 }

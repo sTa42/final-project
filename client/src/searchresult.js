@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ProductListing from "./productlisting";
 
 export default function SearchResult() {
     const params = useParams();
@@ -25,7 +26,13 @@ export default function SearchResult() {
             {foundProducts && (
                 <div>
                     {foundProducts.map((product) => {
-                        return <div key={product.id}>{product.name}</div>;
+                        return (
+                            <ProductListing
+                                key={product.id}
+                                id={product.id}
+                                name={product.name}
+                            />
+                        );
                     })}
                 </div>
             )}
