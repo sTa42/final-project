@@ -21,6 +21,8 @@ export default function cartReducer(cart = Object, action) {
     } else if (action.type == "cart/itemremoved") {
         cart = { ...cart };
         delete cart[action.payload];
+    } else if (action.type == "cart/emptied") {
+        cart = {};
     }
     return cart;
 }
@@ -115,6 +117,24 @@ export function removeFromCart(id) {
             console.log("Data from RemoveFromCart Call: ", data);
             if (data.success) {
                 dispatch({ type: "cart/itemremoved", payload: data.item });
+            }
+        } catch (err) {
+            console.log("ERROR POSTING ITEM TO CART: ", err);
+        }
+    };
+}
+export function emptyCart(cart) {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`/api/v1/cart/empty`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cart }),
+            });
+            const data = await response.json();
+            console.log("Data from RemoveFromCart Call: ", data);
+            if (data.success) {
+                dispatch({ type: "cart/emptied" });
             }
         } catch (err) {
             console.log("ERROR POSTING ITEM TO CART: ", err);

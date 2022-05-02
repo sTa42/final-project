@@ -13,16 +13,26 @@ import { receiveCart } from "./redux/cart/slice";
 import SearchBar from "./searchbar";
 import FeaturedProducts from "./featuredproducts";
 import ProductPage from "./productpage";
+import AccountOverview from "./accountoverview";
 import Orders from "./orders_overview";
 import OrderDetailed from "./order_detail";
 import SearchResult from "./searchresult";
+import Cart from "./cart";
+import Checkout from "./checkout";
+import Adresses from "./adresses";
 export default function App() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.userReducer);
+    const cart = useSelector((state) => state.cartReducer);
+    const [itemsCount, setItemsCount] = useState(0);
+
     useEffect(() => {
         dispatch(receiveUser());
         dispatch(receiveCart());
     }, []);
+    useEffect(() => {
+        setItemsCount(Object.keys(cart).length);
+    }, [cart]);
     return (
         <>
             <div>
@@ -35,21 +45,14 @@ export default function App() {
                             height={100}
                             style={{ objectFit: "cover" }}
                         ></img>
-                        <SearchBar />, <Link to={"/orders"}>USER</Link>
-                        Icon, Cart
+                        <SearchBar />, <Link to={"/account"}>USER</Link>
+                        <Link to={"/cart"}>Cart</Link>
+                        {"Different Items in Cart:"}{" "}
+                        {cart && itemsCount && <>{itemsCount}</>}
                     </header>
 
                     <Route exact path={"/"}>
                         <FeaturedProducts />
-
-                        <div>
-                            <h2>user</h2>
-                            {user && (
-                                <div>
-                                    {user.id} {user.firstname} {user.lastname}
-                                </div>
-                            )}
-                        </div>
                     </Route>
                     <Route exact path={"/product/:id"}>
                         <ProductPage />
@@ -60,8 +63,20 @@ export default function App() {
                     <Route exact path={"/orders"}>
                         <Orders />
                     </Route>
+                    <Route exact path={"/adresses"}>
+                        <Adresses />
+                    </Route>
                     <Route exact path={"/order/:id"}>
                         <OrderDetailed />
+                    </Route>
+                    <Route exact path={"/cart"}>
+                        <Cart />
+                    </Route>
+                    <Route exact path={"/cart/checkout"}>
+                        <Checkout />
+                    </Route>
+                    <Route exact path={"/account"}>
+                        <AccountOverview />
                     </Route>
                 </BrowserRouter>
             </div>

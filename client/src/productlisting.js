@@ -13,7 +13,15 @@ export default function ProductListing(props) {
     return (
         <div>
             <Link to={`/product/${props.id}`}></Link>
-            <div>{props.name}</div>
+            <div>
+                {props.name}
+                {" Price: $"} {props.price}
+            </div>
+            <img
+                src={props.img || "/default-product-image.png"}
+                height={50}
+                width={50}
+            ></img>
             {!item && <AddToCartButton id={props.id} />}
 
             {item && (

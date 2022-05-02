@@ -9,6 +9,7 @@ const authRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
+const adddressRouter = require("./routes/address");
 
 const sessionSecret =
     process.env.COOKIE_SECRET || require("./secrets").COOKIE_SECRET;
@@ -51,6 +52,7 @@ app.use(`${apiRoute}/user`, authRouter);
 app.use(`${apiRoute}/product`, productRouter);
 app.use(`${apiRoute}/cart`, cartRouter);
 app.use(`${apiRoute}/order`, orderRouter);
+app.use(`${apiRoute}/address`, adddressRouter);
 
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));

@@ -34,7 +34,7 @@ export default function Orders() {
                                             );
                                         }}
                                     >
-                                        Hey Hey
+                                        See details
                                     </button>
                                 </div>
                             );

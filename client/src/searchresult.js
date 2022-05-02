@@ -24,13 +24,14 @@ export default function SearchResult() {
         <>
             <div>HELLO FROM SEARCH RESULT</div>
             {foundProducts && (
-                <div>
+                <div className="searchResultsContainer">
                     {foundProducts.map((product) => {
                         return (
                             <ProductListing
                                 key={product.id}
                                 id={product.id}
                                 name={product.name}
+                                price={product.price}
                             />
                         );
                     })}

@@ -20,7 +20,7 @@ router.get("/all.json", async (req, res) => {
         res.json({ success: false, message: "server error" });
     }
 });
-router.get("/create", async (req, res) => {
+router.post("/create", async (req, res) => {
     if (req.session.cart) {
         console.log(req.session.cart);
 

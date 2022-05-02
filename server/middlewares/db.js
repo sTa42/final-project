@@ -95,3 +95,20 @@ exports.createOrdersContentEntryForOrder = (order_id, item_id, amount) => {
         [order_id, item_id, amount]
     );
 };
+
+exports.getAllAddresses = (id) => {
+    return db.query(`SELECT * FROM addresses WHERE user_id = $1;`, [id]);
+};
+
+exports.addAddress = (user_id, street, zipcode, city) => {
+    return db.query(
+        `INSERT INTO addresses (user_id, street, zipcode, city) VALUES ($1, $2, $3, $4) RETURNING *;`,
+        [user_id, street, zipcode, city]
+    );
+};
+exports.removeAdress = (user_id, address_id) => {
+    return db.query(
+        `DELETE FROM addresses WHERE user_id = $1 AND id = $2 RETURNING id;`,
+        [user_id, address_id]
+    );
+};

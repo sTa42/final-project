@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { getProductDataById } = require("../middlewares/db");
 
 router.get("/content.json", (req, res) => {
     if (req.session.cart) {
@@ -8,9 +9,33 @@ router.get("/content.json", (req, res) => {
         res.json({ success: false });
     }
 });
+router.get("/view.json", async (req, res) => {
+    try {
+        console.log(req.session.cart);
+        const cart = req.session.cart;
+        const promises = [];
+
+        for (const item in cart) {
+            promises.push(getProductDataById(item));
+        }
+        const data = await Promise.all(promises);
+        const items = data.map(({ rows: [item] }) => {
+            item.amount = cart[item.id].amount;
+            return item;
+        });
+
+        res.json({
+            success: true,
+            items,
+        });
+    } catch (err) {
+        console.log("ERROR GETTING PRODUCT DATA FOR CART DISPLAY: ", err);
+        res.json({ success: false, message: "server error" });
+    }
+});
 
 // change to post later
-router.get("/empty", (req, res) => {
+router.post("/empty", (req, res) => {
     req.session.cart = {};
     res.json({ success: true, message: "emptied" });
 });
