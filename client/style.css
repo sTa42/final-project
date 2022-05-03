@@ -2,30 +2,219 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body {
-    background-color: ghostwhite;
+    /* background-color: green; */
+    /* background-color: #e0ece4; */
+    background-color: #d8d3cd;
 }
-
+.headerwrapper {
+    background-color: #f7f2e7;
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+}
 header {
+    background-color: #f7f2e7;
     max-width: 90vw;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: space-between;
 }
-
-.searchResultsContainer {
-    width: 100px;
-    position: absolute;
-    overflow: hidden;
-    background-color: whitesmoke;
-    z-index: 1;
+.content {
+    max-width: 90vw;
+    margin: 0 auto;
+}
+.searchBar {
+    position: relative;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .searchResult {
-    width: 100px;
+    width: 100%;
+    line-height: 2em;
+    padding-left: 1em;
 }
+
 .searchResult:hover {
     cursor: pointer;
-    background-color: yellowgreen;
+    background-color: #e0ece4;
+}
+
+.searchInput {
+    width: 100%;
+}
+.searchResultsContainer {
+    width: 100%;
+    top: 100%;
+    max-height: 35vh;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #f4f5f6;
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+}
+
+.navlink {
+    font-size: 1.5em;
+    text-decoration: none;
+    margin: 0.5em;
+    color: black;
+}
+.navlink:hover {
+    cursor: pointer;
+}
+.navlink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.accountIcons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sitelogo {
+    object-fit: cover;
+}
+.shoppingIcon:hover {
+    cursor: pointer;
+}
+.shopicon-group {
+    margin-top: 0.5em;
+    display: flex;
+    /* justify-content: flex-end; */
+    /* flex-direction: row-reverse; */
+    gap: 0.5em;
+}
+.product-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 0.25em;
+}
+.product-link:visited {
+    color: black;
+    text-decoration: none;
+}
+.featuredProductsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    /* align-items: center; */
+    justify-content: center;
+}
+.product-listing {
+    /* width: 10em;
+    height: 10em; */
+    display: flex;
+    flex-direction: column;
+}
+.product-listing a {
+    display: flex;
+    flex-direction: column;
+}
+.headline {
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: 3em;
+}
+.product-single-view-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 400px;
+}
+.product-single-view-item {
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+.product-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+}
+.product-view-buttons {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    /* align-items: flex-end; */
+    /* flex-direction: row-reverse; */
+}
+.product-view-buttons-item {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.description {
+    flex-wrap: wrap;
+    flex-direction: flex-end;
+    justify-content: center;
+
+    align-items: center;
+}
+.cart-view-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.searchview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em;
+}
+.clear-cart {
+    align-self: flex-end;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.clear-cart:hover {
+    cursor: pointer;
+}
+
+.checkoutText {
+    margin-top: 2.5em;
+    color: black;
+    font-size: 2em;
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+}
+.checkoutText a {
+    color: inherit;
+    text-decoration: none;
+}
+.checkoutText a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+.checkoutText:hover {
+}
+
+.account-link-container {
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+}
+.account-link {
+    color: black;
+    font-size: 2em;
+    text-decoration: none;
+}
+.user-data-container {
+    display: flex;
+    flex-direction: column;
 }

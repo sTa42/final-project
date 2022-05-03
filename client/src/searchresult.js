@@ -22,9 +22,11 @@ export default function SearchResult() {
 
     return (
         <>
-            <div>HELLO FROM SEARCH RESULT</div>
+            <div className="headline">
+                Your search result for {params.search}
+            </div>
             {foundProducts && (
-                <div className="searchResultsContainer">
+                <div className="searchview-container">
                     {foundProducts.map((product) => {
                         return (
                             <ProductListing

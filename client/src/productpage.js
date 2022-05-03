@@ -27,14 +27,40 @@ export default function ProductPage() {
     return (
         <>
             {product && (
-                <div>
-                    <ProductListing
-                        key={product.id}
-                        id={product.id}
-                        name={product.name}
-                    />
-                    {product.id} {product.name} {product.description}
-                </div>
+                <>
+                    <h1 className="headline">{product.name}</h1>
+                    <div className="product-single-view-container">
+                        <div className="product-single-view-item description">
+                            {product.description}
+                        </div>
+
+                        <div className="product-single-view-item product-view">
+                            <img
+                                height={400}
+                                width={400}
+                                src={
+                                    product.picture_url ||
+                                    "/default-product-image.png"
+                                }
+                            ></img>
+                            {/* {product.id} {product.name} {product.description} */}
+                        </div>
+                        <div className="product-view-buttons">
+                            <div className="product-view-buttons-item">
+                                First{" "}
+                            </div>
+                            <div className="product-view-buttons-item">
+                                <ProductListing
+                                    productView={true}
+                                    key={product.id}
+                                    id={product.id}
+                                    // name={product.name}
+                                    // price={product.price}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </>
             )}
         </>
     );

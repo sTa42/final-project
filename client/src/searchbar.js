@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Input from "@mui/material/Input";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function SearchBar() {
     const history = useHistory();
@@ -46,30 +44,32 @@ export default function SearchBar() {
                     setSearch(e.target.value);
                 }}
             ></input> */}
+
             <Input
+                className="searchInput"
                 placeholder={"Search for products"}
                 value={search}
                 onChange={(e) => {
                     setSearch(e.target.value);
                 }}
-            />
-            <button
+            ></Input>
+            {/* <SearchIcon
+                fontSize="large"
                 onClick={() => {
                     if (search.length > 0) {
                         history.replace(`/product/search/${search}`);
                         setSearch("");
                     }
                 }}
-            >
-                Go To Search Result
-            </button>
+            /> */}
+
             {productNames.length > 0 && (
-                <div className={"searchResultContainer"}>
+                <div className={"searchResultsContainer"}>
                     <div
                         className="searchResult"
                         onClick={() => {
-                            history.replace(`/product/search/${search}`);
                             setSearch("");
+                            history.replace(`/product/search/${search}`);
                         }}
                     >{`Search for: ${search}`}</div>
                     {productNames.map((product) => {

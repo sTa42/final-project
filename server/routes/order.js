@@ -21,6 +21,7 @@ router.get("/all.json", async (req, res) => {
     }
 });
 router.post("/create", async (req, res) => {
+    console.log(req.body);
     if (req.session.cart) {
         console.log(req.session.cart);
 

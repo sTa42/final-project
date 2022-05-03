@@ -7,12 +7,21 @@ export default function AccountOverview() {
     return (
         <>
             {user && (
-                <p>
-                    Hello {user.firstname} {user.lastname}
-                </p>
+                <>
+                    <h1 className="headline">Account overview</h1>
+                </>
             )}
-            <Link to={"/orders"}>My orders</Link>
-            <Link to={"/adresses"}>My adresses</Link>
+            <div className="account-link-container">
+                <Link className="account-link" to={"/account/data"}>
+                    My data
+                </Link>
+                <Link className="account-link" to={"/orders"}>
+                    My orders
+                </Link>
+                <Link className="account-link" to={"/adresses"}>
+                    My adresses
+                </Link>
+            </div>
         </>
     );
 }

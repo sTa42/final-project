@@ -8,6 +8,9 @@ import { useDispatch } from "react-redux";
 export default function () {
     const cart = useSelector((state) => state.cartReducer);
     const dispatch = useDispatch();
+    const [addresses, setAddresses] = useState([]);
+    const [selectedOption, setSelectedOption] = useState(-1);
+    const [addressForOrder, setAddressForOrder] = useState(Object);
     const [items, setItems] = useState([]);
     const [checkedOut, setCheckedOut] = useState(false);
     const [orderId, setOrderId] = useState("");
@@ -22,13 +25,22 @@ export default function () {
                 }
             })
             .catch((err) => console.log(err));
+        fetch(`/api/v1/address/all.json`)
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log("cart data from server/session: ", data);
+                if (data.success) {
+                    setAddresses(data.addresses);
+                }
+            })
+            .catch((err) => console.log(err));
     }, []);
 
     const postOrder = () => {
         fetch(`/api/v1/order/create`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ cart }),
+            body: JSON.stringify({ cart, address: addressForOrder }),
         })
             .then((resp) => resp.json())
             .then((data) => {
@@ -59,6 +71,30 @@ export default function () {
                             </div>
                         );
                     })}
+                    {addresses && (
+                        <>
+                            <select
+                                value={selectedOption}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+
+                                    setSelectedOption(e.target.value);
+                                    setAddressForOrder(
+                                        addresses[e.target.value]
+                                    );
+                                }}
+                            >
+                                {addresses.map((address, index) => {
+                                    return (
+                                        <option key={address.id} value={index}>
+                                            {`${address.id}: ${address.street}, ${address.zipcode}, ${address.city}`}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                            {addressForOrder && <>{addressForOrder.id}</>}
+                        </>
+                    )}
                 </>
             )}
             {checkedOut && orderId && (

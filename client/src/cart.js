@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { emptyCart } from "./redux/cart/slice";
 import { useDispatch } from "react-redux";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -25,10 +26,10 @@ export default function Cart() {
 
     return (
         <>
-            <span>HELLO FROM THE CART</span>
+            <h1 className="headline">Items currently in cart</h1>
             {!!items.length && (
                 <>
-                    <div>
+                    <div className="cart-view-container">
                         {items.map((product) => {
                             return (
                                 <ProductListing
@@ -40,14 +41,18 @@ export default function Cart() {
                             );
                         })}
                     </div>
-                    <Link to={"/cart/checkout"}>Go to checkout</Link>
-                    <button
-                        onClick={() => {
-                            dispatch(emptyCart());
-                        }}
-                    >
-                        {"DELETE CART"}
-                    </button>
+                    <div className="checkoutText">
+                        <Link to={"/cart/checkout"}>Go to checkout</Link>
+                        <span
+                            className="clear-cart"
+                            onClick={() => {
+                                dispatch(emptyCart());
+                            }}
+                        >
+                            Empty cart{" "}
+                            <RemoveShoppingCartIcon fontSize="large" />
+                        </span>
+                    </div>
                 </>
             )}
         </>

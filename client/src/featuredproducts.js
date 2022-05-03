@@ -21,10 +21,9 @@ export default function FeaturedProducts() {
     }, []);
     return (
         <div>
-            <h1>FEATURED PRODUCTS</h1>
-            <div className={"featuredProductsContainer"}></div>
+            <h1 className="headline">Featured Products</h1>
             {featuredProducts && (
-                <>
+                <div className="featuredProductsContainer">
                     {featuredProducts.map((product) => {
                         return (
                             // <div
@@ -43,10 +42,11 @@ export default function FeaturedProducts() {
                                 id={product.id}
                                 name={product.name}
                                 price={product.price}
+                                featuredView={true}
                             />
                         );
                     })}
-                </>
+                </div>
             )}
         </div>
     );

@@ -14,7 +14,7 @@ exports.registerUser = (firstname, lastname, email, password) => {
 };
 exports.getBasicUserData = (id) => {
     return db.query(
-        `SELECT id, firstname, lastname FROM users WHERE id = $1;`,
+        `SELECT id, firstname, lastname, email, created_at FROM users WHERE id = $1;`,
         [id]
     );
 };
