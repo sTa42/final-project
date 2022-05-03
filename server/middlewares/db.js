@@ -77,10 +77,10 @@ exports.updateTotalCostInOrders = (orderId, cost) => {
         [orderId, cost]
     );
 };
-exports.createOrder = (order_id, user_id) => {
+exports.createOrder = (order_id, user_id, address_id) => {
     return db.query(
-        `INSERT INTO orders (order_id, user_id, status) VALUES ($1, $2, 'ORDERED') RETURNING *`,
-        [order_id, user_id]
+        `INSERT INTO orders (order_id, user_id, status, address) VALUES ($1, $2, 'ORDERED', $3) RETURNING *`,
+        [order_id, user_id, address_id]
     );
 };
 exports.updateOrderWithPrice = (order_id, totalcost) => {
@@ -99,7 +99,9 @@ exports.createOrdersContentEntryForOrder = (order_id, item_id, amount) => {
 exports.getAllAddresses = (id) => {
     return db.query(`SELECT * FROM addresses WHERE user_id = $1;`, [id]);
 };
-
+exports.getAddress = (id) => {
+    return db.query(`SELECT * FROM addresses WHERE id = $1;`, [id]);
+};
 exports.addAddress = (user_id, street, zipcode, city) => {
     return db.query(
         `INSERT INTO addresses (user_id, street, zipcode, city) VALUES ($1, $2, $3, $4) RETURNING *;`,

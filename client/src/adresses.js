@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
 export default function Adresses() {
     const [addresses, setAddresses] = useState([]);
     const [street, setStreet] = useState("");
@@ -43,25 +46,24 @@ export default function Adresses() {
     };
     return (
         <>
-            Hello From Adressess
+            <h1 className="headline">Your saved addresses</h1>
             {!!addresses.length && (
-                <>
+                <div className="address-view-container">
                     {addresses.map((address) => {
                         // console.log(address);
                         return (
-                            <div key={address.id}>
-                                {address.id}
-                                {address.street}
-                                {address.zipcode}
-                                {address.city}
+                            <div className="address" key={address.id}>
+                                <p>{address.street}</p>
+                                <p>{address.zipcode}</p>
+                                <p>{address.city}</p>
                             </div>
                         );
                     })}
-                </>
+                </div>
             )}
-            <h1>Add a address</h1>
+            <h4>Add a address</h4>
             <form>
-                <input
+                <TextField
                     onChange={(e) => {
                         setStreet(e.target.value);
                     }}
@@ -69,8 +71,8 @@ export default function Adresses() {
                     placeholder="STREET"
                     type={"text"}
                     value={street}
-                ></input>
-                <input
+                ></TextField>
+                <TextField
                     onChange={(e) => {
                         setZipcode(e.target.value);
                     }}
@@ -78,8 +80,8 @@ export default function Adresses() {
                     placeholder="ZIPCODE"
                     type={"number"}
                     value={zipcode}
-                ></input>
-                <input
+                ></TextField>
+                <TextField
                     onChange={(e) => {
                         setCity(e.target.value);
                     }}
@@ -87,8 +89,10 @@ export default function Adresses() {
                     placeholder="CITY"
                     type={"text"}
                     value={city}
-                ></input>
-                <button onClick={submitAddressClickHandler}>Add address</button>
+                ></TextField>
+                <Button variant="contained" onClick={submitAddressClickHandler}>
+                    Add address
+                </Button>
             </form>
         </>
     );

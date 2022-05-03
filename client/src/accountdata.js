@@ -6,19 +6,32 @@ export default function AccountData() {
     return (
         <>
             {user && (
-                <div className="user-data-container">
+                <>
                     <h1 className="headline">Data about yourself</h1>
-                    <h2>First Name</h2>
-                    <p>{user.firstname}</p>
-                    <h2>Last Name</h2>
-                    <p>{user.lastname}</p>
-                    <h2>Email</h2>
-                    <p>{user.email}</p>
-                    <h2>Customer since</h2>
-                    <p>
-                        <Moment format="DD.MM.YYYY" date={user.created_at} />
-                    </p>
-                </div>
+                    <div className="user-data-container">
+                        <div>
+                            <h2>First Name</h2>
+                            <p>{user.firstname}</p>
+                        </div>
+                        <div>
+                            <h2>Last Name</h2>
+                            <p>{user.lastname}</p>
+                        </div>
+                        <div>
+                            <h2>Email</h2>
+                            <p>{user.email}</p>
+                        </div>
+                        <div>
+                            <h2>Customer since</h2>
+                            <p>
+                                <Moment
+                                    format="DD.MM.YYYY"
+                                    date={user.created_at}
+                                />
+                            </p>
+                        </div>
+                    </div>
+                </>
             )}
         </>
     );

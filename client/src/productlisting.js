@@ -53,7 +53,7 @@ export default function ProductListing(props) {
                 </>
             )}
 
-            {props.price && <p>{`Price: $${props.price}`}</p>}
+            {props.price && <p>{`$${props.price}`}</p>}
             <div className="shopicon-group">
                 {!item && <AddToCartButton id={props.id} />}
 

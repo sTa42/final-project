@@ -4,6 +4,7 @@ CREATE TABLE orders (
     order_id VARCHAR UNIQUE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(10) NOT NULL,
+    address INT NOT NULL REFERENCES addresses(id),
     totalcost NUMERIC(10,2)
 );
 

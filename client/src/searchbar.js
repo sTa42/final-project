@@ -18,6 +18,8 @@ export default function SearchBar() {
                     if (!abort) {
                         if (data.success) {
                             setProductNames(data.products);
+                        } else {
+                            setProductNames([]);
                         }
                     }
                 })

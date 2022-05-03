@@ -87,7 +87,8 @@ header {
 .shopicon-group {
     margin-top: 0.5em;
     display: flex;
-    /* justify-content: flex-end; */
+    align-items: center;
+    justify-content: center;
     /* flex-direction: row-reverse; */
     gap: 0.5em;
 }
@@ -112,8 +113,9 @@ header {
     justify-content: center;
 }
 .product-listing {
-    /* width: 10em;
+    /* width: 15em;
     height: 10em; */
+    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
 }
@@ -217,4 +219,90 @@ header {
 .user-data-container {
     display: flex;
     flex-direction: column;
+    gap: 0.5em;
+}
+.all-orders-view-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+.order-card-view {
+    border: 1px dashed #3a3b3b;
+    padding: 5px;
+}
+.order-card-view-sub-container {
+    display: flex;
+    justify-content: space-between;
+}
+.order-detail-container {
+    display: flex;
+    align-self: flex-end;
+    font-size: 1.25em;
+    align-items: center;
+    /* justify-content: center; */
+}
+.order-detail-container:hover {
+    cursor: pointer;
+}
+
+.orderheadline {
+    font-size: 3em;
+    text-align: center;
+}
+.orderheadline-sub {
+    text-align: center;
+    font-size: 1em;
+}
+.order-single-view-container {
+    display: flex;
+    flex-direction: column;
+}
+.items-container {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin-bottom: 3em;
+}
+.item-single-container {
+    display: flex;
+    flex-direction: column;
+}
+.order-single-view-sub-container {
+    display: flex;
+    justify-content: space-between;
+}
+.inline-link {
+    color: black;
+    text-decoration: none;
+}
+.inline-link:hover {
+    cursor: pointer;
+}
+.inline-link:visited {
+    color: Black;
+}
+.order-layout-container {
+    display: flex;
+}
+.order-layout-item {
+    width: 50%;
+}
+.address-order {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.address-view-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+.address {
+    border: 1px dashed #3a3b3b;
+    height: 200px;
+    width: 200px;
+    padding: 5px;
 }

@@ -37,7 +37,7 @@ export default function FeaturedProducts() {
                             //     <AddToCartButton id={product.id} />
                             // </div>
                             <ProductListing
-                                className={"searchResult"}
+                                // className={"searchResult"}
                                 key={product.id}
                                 id={product.id}
                                 name={product.name}

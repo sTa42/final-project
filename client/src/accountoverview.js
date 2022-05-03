@@ -18,7 +18,7 @@ export default function AccountOverview() {
                 <Link className="account-link" to={"/orders"}>
                     My orders
                 </Link>
-                <Link className="account-link" to={"/adresses"}>
+                <Link className="account-link" to={"/addresses"}>
                     My adresses
                 </Link>
             </div>

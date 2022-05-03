@@ -46,9 +46,7 @@ export default function ProductPage() {
                             {/* {product.id} {product.name} {product.description} */}
                         </div>
                         <div className="product-view-buttons">
-                            <div className="product-view-buttons-item">
-                                First{" "}
-                            </div>
+                            <div className="product-view-buttons-item"></div>
                             <div className="product-view-buttons-item">
                                 <ProductListing
                                     productView={true}

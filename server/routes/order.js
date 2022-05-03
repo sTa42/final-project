@@ -8,6 +8,7 @@ const {
     createOrder,
     updateOrderWithPrice,
     createOrdersContentEntryForOrder,
+    getAddress,
 } = require("../middlewares/db");
 const crypto = require("crypto");
 
@@ -33,7 +34,11 @@ router.post("/create", async (req, res) => {
             }
             const {
                 rows: [order],
-            } = await createOrder(order_id, req.session.userId);
+            } = await createOrder(
+                order_id,
+                req.session.userId,
+                req.body.address.id
+            );
             console.log(order);
             const prices = await Promise.all(promises);
             let totalprice = 0;
@@ -105,10 +110,15 @@ router.get("/:id.json", async (req, res) => {
             order.rows.length != 0 &&
             req.session.userId == order.rows[0].user_id
         ) {
+            // console.log(order);
+            const {
+                rows: [address],
+            } = await getAddress(order.rows[0].address);
             res.json({
                 success: true,
                 order: order.rows[0],
                 items,
+                address,
             });
         } else {
             res.json({ success: false, message: "not authorized" });

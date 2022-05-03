@@ -86,7 +86,7 @@ export default function App() {
                         <Route exact path={"/orders"}>
                             <Orders />
                         </Route>
-                        <Route exact path={"/adresses"}>
+                        <Route exact path={"/addresses"}>
                             <Adresses />
                         </Route>
                         <Route exact path={"/order/:id"}>
