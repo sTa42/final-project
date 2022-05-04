@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LogoutButton from "./logoutbutton";
 
 export default function AccountOverview() {
     const user = useSelector((state) => state.userReducer);
@@ -21,6 +22,9 @@ export default function AccountOverview() {
                 <Link className="account-link" to={"/addresses"}>
                     My adresses
                 </Link>
+                <div>
+                    <LogoutButton />
+                </div>
             </div>
         </>
     );

@@ -44,6 +44,7 @@ export default function FeaturedProducts() {
                                 price={product.price}
                                 img={product.picture_url}
                                 featuredView={true}
+                                cN={"product-listing"}
                             />
                         );
                     })}

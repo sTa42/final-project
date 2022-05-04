@@ -83,7 +83,7 @@ export default function Checkout() {
                 <>
                     <div className="checkout-items-section">
                         <h4>Items</h4>
-                        {items.map((item) => {
+                        {/* {items.map((item) => {
                             return (
                                 <div key={item.id}>
                                     <p>
@@ -102,7 +102,35 @@ export default function Checkout() {
                                     </p>
                                 </div>
                             );
-                        })}
+                        })} */}
+                        <table>
+                            {items.map((item) => {
+                                return (
+                                    <tr key={item.id}>
+                                        <td>
+                                            {item.name}
+                                            {"\u00a0\u00a0\u00a0\u00a0"}
+                                        </td>
+                                        <td>
+                                            {"$"}
+                                            {item.price}
+                                        </td>
+                                        <td>
+                                            {"\u00a0x"}
+                                            <strong>{item.amount}</strong>
+                                        </td>
+                                        <td>
+                                            {"\u00a0\u00a0\u00a0\u00a0Total: $"}
+                                            <strong>
+                                                {Number.parseFloat(
+                                                    item.amount * item.price
+                                                ).toFixed(2)}
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </table>
                     </div>
                     {!!addresses.length && (
                         <>

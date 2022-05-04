@@ -47,6 +47,7 @@ export default function Adresses() {
     return (
         <>
             <h1 className="headline">Your saved addresses</h1>
+            {!addresses.length && <p>No addresses yet.</p>}
             {!!addresses.length && (
                 <div className="address-view-container">
                     {addresses.map((address) => {

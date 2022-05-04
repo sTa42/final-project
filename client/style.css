@@ -108,7 +108,7 @@ header {
 .featuredProductsContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 3em;
     /* align-items: center; */
     justify-content: center;
 }
@@ -116,8 +116,15 @@ header {
     /* width: 15em;
     height: 10em; */
     /* overflow: hidden; */
+    width: 15em;
+    padding: 2em;
     display: flex;
     flex-direction: column;
+    border: 1px dashed #3a3b3b;
+}
+.product-listing:hover {
+    border: 1px solid #3a3b3b;
+    box-shadow: 10px 5px 5px #3a3b3b;
 }
 .product-listing a {
     display: flex;
@@ -169,7 +176,8 @@ header {
 .cart-view-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    /* flex-direction: column; */
+    gap: 2em;
 }
 .searchview-container {
     display: flex;
@@ -354,4 +362,25 @@ header {
 }
 .item-single-container img {
     border: 1px solid black;
+}
+.auth-container {
+    display: flex;
+    /* height: 100vh;
+    width: 100vw; */
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.header-auth {
+    display: flex;
+    justify-content: center;
+}
+.priceTag {
+    text-align: center;
 }

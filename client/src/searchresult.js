@@ -35,6 +35,8 @@ export default function SearchResult() {
                                 name={product.name}
                                 price={product.price}
                                 img={product.picture_url}
+                                cN={"product-listing"}
+                                searchresult={true}
                             />
                         );
                     })}

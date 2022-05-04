@@ -6,8 +6,14 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 export default function Welcome() {
     return (
         <>
-            <p>Welcome</p>
             <BrowserRouter>
+                <div className="header-auth">
+                    <img
+                        src="/Nozama-logos_black.png"
+                        height={250}
+                        width={250}
+                    ></img>
+                </div>
                 <Switch>
                     <Route exact path="/">
                         <Registration />

@@ -21,6 +21,7 @@ export default function Orders() {
     return (
         <>
             <h1 className="headline">Your orders</h1>
+            {!orders.length && <p>You dont have any orders.</p>}
 
             {!!orders.length && (
                 <div className="all-orders-view-container">

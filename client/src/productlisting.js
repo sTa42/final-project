@@ -11,7 +11,8 @@ export default function ProductListing(props) {
     const item = useSelector((state) => state.cartReducer[props.id]);
 
     return (
-        <div className={`product-listing ${props.cN || ""}`}>
+        // <div className={`product-listing ${props.cN || ""}`}>
+        <div className={props.cN || ""}>
             {!props.productView && (
                 <>
                     {props.featuredView && (
@@ -23,19 +24,18 @@ export default function ProductListing(props) {
                                 <img
                                     src={
                                         props.img ||
-                                        `https://loremflickr.com/500/500?random=${Math.floor(
-                                            Math.random() * 1000
-                                        )}`
-                                        // "/default-product-image.png"
+                                        "/default-product-image.png"
                                     }
                                     height={200}
                                     width={200}
                                 ></img>
-                                <p>{props.name}</p>
+                                <p>
+                                    <strong>{props.name}</strong>
+                                </p>
                             </Link>
                         </>
                     )}
-                    {!props.featuredView && (
+                    {!props.featuredView && !props.searchresult && (
                         <>
                             <Link
                                 className="product-link"
@@ -44,22 +44,41 @@ export default function ProductListing(props) {
                                 <img
                                     src={
                                         props.img ||
-                                        `https://loremflickr.com/500/500?random=${Math.floor(
-                                            Math.random() * 1000
-                                        )}`
-                                        // "/default-product-image.png"
+                                        "/default-product-image.png"
                                     }
                                     height={50}
                                     width={50}
                                 ></img>
-                                <p>{props.name}</p>
+                                <p>
+                                    <strong>{props.name}</strong>
+                                </p>
+                            </Link>
+                        </>
+                    )}
+                    {props.searchresult && (
+                        <>
+                            <Link
+                                className="product-link"
+                                to={`/product/${props.id}`}
+                            >
+                                <img
+                                    src={
+                                        props.img ||
+                                        "/default-product-image.png"
+                                    }
+                                    height={150}
+                                    width={150}
+                                ></img>
+                                <p>
+                                    <strong>{props.name}</strong>
+                                </p>
                             </Link>
                         </>
                     )}
                 </>
             )}
 
-            {props.price && <p>{`$${props.price}`}</p>}
+            {props.price && <p className="priceTag">{`$${props.price}`}</p>}
             <div className="shopicon-group">
                 {!item && <AddToCartButton id={props.id} />}
 
@@ -78,7 +97,9 @@ export default function ProductListing(props) {
                     </>
                 )}
             </div>
-            {item && item.amount > 0 && <span>In Cart: {item.amount}</span>}
+            {item && item.amount > 0 && (
+                <p className="priceTag">In Cart: {item.amount}</p>
+            )}
         </div>
     );
 }
