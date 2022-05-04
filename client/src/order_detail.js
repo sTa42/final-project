@@ -24,7 +24,7 @@ export default function OrderDetailed() {
     }, []);
     return (
         <>
-            {order && (
+            {order.order_id && (
                 <>
                     <h1 className="orderheadline">Details for order</h1>
                     <h3 className="orderheadline-sub">{order.order_id}</h3>
@@ -34,7 +34,7 @@ export default function OrderDetailed() {
                             <h4>
                                 Ordered on{" "}
                                 <Moment
-                                    format="HH:MM, DD.MM.YYYY"
+                                    format="HH:mm, DD.MM.YYYY"
                                     date={order.created_at}
                                 />
                             </h4>
@@ -88,6 +88,9 @@ export default function OrderDetailed() {
                                             )}
                                         </div>
                                     </div>
+                                    <p>
+                                        STATUS: <strong>{order.status}</strong>
+                                    </p>
                                     <p>
                                         Total cost of order: $
                                         <strong>{order.totalcost}</strong>

@@ -81,7 +81,7 @@ export default function Checkout() {
             <h1 className="headline">Checkout</h1>
             {!checkedOut && !!items.length && (
                 <>
-                    <div>
+                    <div className="checkout-items-section">
                         <h4>Items</h4>
                         {items.map((item) => {
                             return (
@@ -106,6 +106,7 @@ export default function Checkout() {
                     </div>
                     {!!addresses.length && (
                         <>
+                            <h4>Choose an address for delivery</h4>
                             <select
                                 value={selectedOption}
                                 onChange={(e) => {
@@ -128,7 +129,7 @@ export default function Checkout() {
                             {/* {addressForOrder && <>{addressForOrder.id}</>} */}
                         </>
                     )}
-                    <p>
+                    <p className="cost-view">
                         Total:{" $"}
                         {predictedTotalCost && (
                             <>
@@ -156,24 +157,28 @@ export default function Checkout() {
             )}
             {checkedOut && orderId && (
                 <div>
-                    <p>Thank you for your order!</p>
-                    <Link to={`/order/${orderId}`}>
-                        See your status of your order here
-                    </Link>
+                    <p className="thanks-message">Thank you for your order!</p>
+                    <div className="link-wrapper">
+                        <Link className="inline-link" to={`/order/${orderId}`}>
+                            See your status of your order here
+                        </Link>
+                    </div>
                 </div>
             )}
             {!checkedOut && !!addresses.length && !!items.length && (
                 <>
                     <Button variant="contained" onClick={postOrder}>
-                        Submit your order
+                        Place order
                     </Button>
                 </>
             )}{" "}
             {!checkedOut && (
                 <>
-                    <Link to={"/cart"}>
-                        Go back to cart, if you want to change something.
-                    </Link>
+                    <div className="link-wrapper">
+                        <Link to={"/cart"} className="inline-link">
+                            Go back to cart, if you want to change something.
+                        </Link>
+                    </div>
                 </>
             )}
         </>

@@ -23,7 +23,10 @@ export default function ProductListing(props) {
                                 <img
                                     src={
                                         props.img ||
-                                        "/default-product-image.png"
+                                        `https://loremflickr.com/500/500?random=${Math.floor(
+                                            Math.random() * 1000
+                                        )}`
+                                        // "/default-product-image.png"
                                     }
                                     height={200}
                                     width={200}
@@ -41,7 +44,10 @@ export default function ProductListing(props) {
                                 <img
                                     src={
                                         props.img ||
-                                        "/default-product-image.png"
+                                        `https://loremflickr.com/500/500?random=${Math.floor(
+                                            Math.random() * 1000
+                                        )}`
+                                        // "/default-product-image.png"
                                     }
                                     height={50}
                                     width={50}

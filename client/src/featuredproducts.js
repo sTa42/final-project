@@ -42,6 +42,7 @@ export default function FeaturedProducts() {
                                 id={product.id}
                                 name={product.name}
                                 price={product.price}
+                                img={product.picture_url}
                                 featuredView={true}
                             />
                         );

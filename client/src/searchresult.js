@@ -34,6 +34,7 @@ export default function SearchResult() {
                                 id={product.id}
                                 name={product.name}
                                 price={product.price}
+                                img={product.picture_url}
                             />
                         );
                     })}

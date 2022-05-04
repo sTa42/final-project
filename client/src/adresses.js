@@ -61,35 +61,37 @@ export default function Adresses() {
                     })}
                 </div>
             )}
-            <h4>Add a address</h4>
-            <form>
-                <TextField
-                    onChange={(e) => {
-                        setStreet(e.target.value);
-                    }}
-                    name="street"
-                    placeholder="STREET"
-                    type={"text"}
-                    value={street}
-                ></TextField>
-                <TextField
-                    onChange={(e) => {
-                        setZipcode(e.target.value);
-                    }}
-                    name="zipcode"
-                    placeholder="ZIPCODE"
-                    type={"number"}
-                    value={zipcode}
-                ></TextField>
-                <TextField
-                    onChange={(e) => {
-                        setCity(e.target.value);
-                    }}
-                    name="city"
-                    placeholder="CITY"
-                    type={"text"}
-                    value={city}
-                ></TextField>
+            <form className="add-address-form">
+                <h4 className="smallHeadline">Add a new address</h4>
+                <div className="add-address-form-sub">
+                    <TextField
+                        onChange={(e) => {
+                            setStreet(e.target.value);
+                        }}
+                        name="street"
+                        placeholder="STREET"
+                        type={"text"}
+                        value={street}
+                    ></TextField>
+                    <TextField
+                        onChange={(e) => {
+                            setZipcode(e.target.value);
+                        }}
+                        name="zipcode"
+                        placeholder="ZIPCODE"
+                        type={"number"}
+                        value={zipcode}
+                    ></TextField>
+                    <TextField
+                        onChange={(e) => {
+                            setCity(e.target.value);
+                        }}
+                        name="city"
+                        placeholder="CITY"
+                        type={"text"}
+                        value={city}
+                    ></TextField>
+                </div>
                 <Button variant="contained" onClick={submitAddressClickHandler}>
                     Add address
                 </Button>

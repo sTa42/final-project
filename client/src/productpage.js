@@ -43,6 +43,7 @@ export default function ProductPage() {
                                     "/default-product-image.png"
                                 }
                             ></img>
+                            {`$${product.price}`}
                             {/* {product.id} {product.name} {product.description} */}
                         </div>
                         <div className="product-view-buttons">
