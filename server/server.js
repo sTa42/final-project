@@ -27,27 +27,6 @@ app.use(
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
-const db = require("./middlewares/db");
-app.get("/testing.json", async (req, res) => {
-    try {
-        const { rows: orders } = await db.getOrderContent(1);
-        // console.log(orders);
-        // let totalcost = 0;
-        // let a = 1.32;
-        // let b = 4.69;
-        // console.log(a + b);
-        // console.log(12.312);
-
-        // console.log(parseInt(orders[0].price));
-        // for (let i = 0; i < orders.length; i++) {
-        //     totalcost += orders[i].price * orders[i].amount;
-        // }
-
-        res.json({ orders });
-    } catch (err) {
-        console.log(err);
-    }
-});
 app.use(`${apiRoute}/user`, authRouter);
 app.use(`${apiRoute}/product`, productRouter);
 app.use(`${apiRoute}/cart`, cartRouter);

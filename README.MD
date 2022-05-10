@@ -1,21 +1,38 @@
 # final-project
 
-Online Shop project with React and Redux. This was my last project, which I chose myself during my training at SPICED ACADEMY.
+Online Shop project with React and Redux. This was my last project, which I chose myself during my training at **[Spiced Academy](https://www.spiced-academy.com/)**.
 
 ## Basic Setup
 
-Create a new postgres database, assign that name to the dbName const in server/middlewares/db.js
+Create a new postgres database, assign that name to the dbName constant in server/middlewares/db.js
+In that course we used a custom npm module for the postgres connection setup **[spiced-pg](https://www.npmjs.com/package/spiced-pg)**
 
 ```JS
-const dbName = "onlineshop";
+const dbName = "YOUR_DB_NAME";
 ```
 
-Create tables. Table creation files are located in server/sql
+1. ### Create tables
 
-Create secrets.json file in server/, assign a string value to the property name "COOKIE_SECRET"
+    Table creation files are located in server/sql directory
+    Create them in that order:
+    users.sql, addresses.sql, products.sql, order.sql, orders_content.sql
 
-```JSON
-"COOKIE_SECRET": "MyCookieSecret"
+2. ### Setup Cookie Session
+
+    Create a secrets.json file in server/ directory or set up an environment variable variable named `"COOKIE_SECRET"` and assign it a string value.
+    Assign a string value to the property name `"COOKIE_SECRET"`
+    E.g. for secrets.json
+
+    ```JSON
+    {
+    "COOKIE_SECRET": "My Cookie Secret"
+    }
+    ```
+
+3. ### Install npm modules
+
+```console
+npm install
 ```
 
 ## Start
