@@ -116,15 +116,20 @@ header {
     /* width: 15em;
     height: 10em; */
     /* overflow: hidden; */
+    padding-top: 1em;
     width: 15em;
-    padding: 2em;
+    height: 22em;
+    /* padding: 2em; */
     display: flex;
     flex-direction: column;
     border: 1px dashed #3a3b3b;
+    transition: box-shadow 0.2s ease-out;
 }
 .product-listing:hover {
     border: 1px solid #3a3b3b;
     box-shadow: 10px 5px 5px #3a3b3b;
+
+    transition: box-shadow 0.2s ease-in;
 }
 .product-listing a {
     display: flex;

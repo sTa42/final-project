@@ -66,8 +66,8 @@ export default function ProductListing(props) {
                                         props.img ||
                                         "/default-product-image.png"
                                     }
-                                    height={150}
-                                    width={150}
+                                    height={200}
+                                    width={200}
                                 ></img>
                                 <p>
                                     <strong>{props.name}</strong>

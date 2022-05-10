@@ -178,8 +178,9 @@ export default function Checkout() {
                         <strong>
                             <Link className="inline-link" to="/addresses">
                                 here
-                            </Link>
+                            </Link>{" "}
                         </strong>
+                        first.
                     </p>
                 </>
             )}
