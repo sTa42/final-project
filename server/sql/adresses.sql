@@ -7,6 +7,6 @@ CREATE TABLE addresses (
     city VARCHAR(255) NOT NULL
     );
 
-INSERT INTO addresses (user_id, street, zipcode, city) VALUES (27,'Werner Street 12', 49213, 'Uulum');
-INSERT INTO addresses (user_id, street, zipcode, city) VALUES (27,'Ogggg Street 12', 12346, 'Faaaan');
-INSERT INTO addresses (user_id, street, zipcode, city) VALUES (27,'Berlin Street 12', 74322, 'Bumbum');
+-- INSERT INTO addresses (user_id, street, zipcode, city) VALUES (27,'Werner Street 12', 49213, 'Uulum');
+-- INSERT INTO addresses (user_id, street, zipcode, city) VALUES (27,'Ogggg Street 12', 12346, 'Faaaan');
+-- INSERT INTO addresses (user_id, street, zipcode, city) VALUES (27,'Berlin Street 12', 74322, 'Bumbum');
