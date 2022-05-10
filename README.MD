@@ -2,6 +2,8 @@
 
 Online Shop project with React and Redux. This was my last project, which I chose myself during my training at **[Spiced Academy](https://www.spiced-academy.com/)**.
 
+![Project picture](https://raw.githubusercontent.com/sTa42/final-project/master/project_pictures/example_pic.png)
+
 ## Basic Setup
 
 Create a new postgres database, assign that name to the dbName constant in server/middlewares/db.js
