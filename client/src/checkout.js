@@ -104,32 +104,41 @@ export default function Checkout() {
                             );
                         })} */}
                         <table>
-                            {items.map((item) => {
-                                return (
-                                    <tr key={item.id}>
-                                        <td>
-                                            {item.name}
-                                            {"\u00a0\u00a0\u00a0\u00a0"}
-                                        </td>
-                                        <td>
-                                            {"$"}
-                                            {item.price}
-                                        </td>
-                                        <td>
-                                            {"\u00a0x"}
-                                            <strong>{item.amount}</strong>
-                                        </td>
-                                        <td>
-                                            {"\u00a0\u00a0\u00a0\u00a0Total: $"}
-                                            <strong>
-                                                {Number.parseFloat(
-                                                    item.amount * item.price
-                                                ).toFixed(2)}
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
+                            <thead>
+                                <tr>
+                                    <td>Items</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {items.map((item) => {
+                                    return (
+                                        <tr key={item.id}>
+                                            <td>
+                                                {item.name}
+                                                {"\u00a0\u00a0\u00a0\u00a0"}
+                                            </td>
+                                            <td>
+                                                {"$"}
+                                                {item.price}
+                                            </td>
+                                            <td>
+                                                {"\u00a0x"}
+                                                <strong>{item.amount}</strong>
+                                            </td>
+                                            <td>
+                                                {
+                                                    "\u00a0\u00a0\u00a0\u00a0Total: $"
+                                                }
+                                                <strong>
+                                                    {Number.parseFloat(
+                                                        item.amount * item.price
+                                                    ).toFixed(2)}
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
                         </table>
                     </div>
                     {!!addresses.length && (

@@ -6,7 +6,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import Link from "@mui/material/Link";
 
-export default function Register() {
+export default function Register(props) {
     const [values, handleChange] = useForm();
     const [error, handleSubmit] = useHandleSubmit(
         "/api/v1/user/register",
@@ -43,10 +43,14 @@ export default function Register() {
                     Register
                 </Button>
             </form>
-
-            <Link component={RouterLink} to="/login">
+            {props.changeView ? (
+                <button className="buttonlink" onClick={props.changeView}>
+                    Have an account? Login here
+                </button>
+            ) : null}
+            {/* <Link component={RouterLink} to="/login">
                 Have an account? Login here
-            </Link>
+            </Link> */}
         </section>
     );
 }

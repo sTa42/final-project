@@ -7,7 +7,7 @@ import Link from "@mui/material/Link";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 
-export default function Login() {
+export default function Login(props) {
     const [values, handleChange] = useForm();
     const [error, handleSubmit] = useHandleSubmit("/api/v1/user/login", values);
 
@@ -31,10 +31,15 @@ export default function Login() {
                     Login
                 </Button>
             </form>
+            {props.changeView ? (
+                <button className="buttonlink" onClick={props.changeView}>
+                    Dont have an account? Click here
+                </button>
+            ) : null}
 
-            <Link component={RouterLink} to="/">
+            {/* <Link component={RouterLink} to="/">
                 Dont have an account? Click here
-            </Link>
+            </Link> */}
         </section>
     );
 }

@@ -16,15 +16,15 @@ const store = createStore(
 async function checkIfLoggedIn() {
     const response = await fetch("/api/v1/user/id.json");
     const data = await response.json();
-    if (!data.userId) {
-        ReactDOM.render(<Welcome />, document.querySelector("main"));
-    } else {
-        ReactDOM.render(
-            <Provider store={store}>
-                <App />
-            </Provider>,
-            document.querySelector("main")
-        );
-    }
+    // if (!data.userId) {
+    //     ReactDOM.render(<Welcome />, document.querySelector("main"));
+    // } else {
+    ReactDOM.render(
+        <Provider store={store}>
+            <App />
+        </Provider>,
+        document.querySelector("main")
+    );
+    // }
 }
 checkIfLoggedIn();
