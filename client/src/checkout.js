@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 
 export default function Checkout() {
     const cart = useSelector((state) => state.cartReducer);
+    const user = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
     const [addresses, setAddresses] = useState([]);
     const [selectedOption, setSelectedOption] = useState(-1);
@@ -141,31 +142,56 @@ export default function Checkout() {
                             </tbody>
                         </table>
                     </div>
-                    {!!addresses.length && (
+                    {!!user.id && (
                         <>
-                            <h4>Choose an address for delivery</h4>
-                            <select
-                                value={selectedOption}
-                                onChange={(e) => {
-                                    console.log(e.target.value);
+                            {!!addresses.length && (
+                                <>
+                                    <h4>Choose an address for delivery</h4>
+                                    <select
+                                        value={selectedOption}
+                                        onChange={(e) => {
+                                            console.log(e.target.value);
 
-                                    setSelectedOption(e.target.value);
-                                    setAddressForOrder(
-                                        addresses[e.target.value]
-                                    );
-                                }}
-                            >
-                                {addresses.map((address, index) => {
-                                    return (
-                                        <option key={address.id} value={index}>
-                                            {`${address.street}, ${address.zipcode}, ${address.city}`}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            {/* {addressForOrder && <>{addressForOrder.id}</>} */}
+                                            setSelectedOption(e.target.value);
+                                            setAddressForOrder(
+                                                addresses[e.target.value]
+                                            );
+                                        }}
+                                    >
+                                        {addresses.map((address, index) => {
+                                            return (
+                                                <option
+                                                    key={address.id}
+                                                    value={index}
+                                                >
+                                                    {`${address.street}, ${address.zipcode}, ${address.city}`}
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                    {/* {addressForOrder && <>{addressForOrder.id}</>} */}
+                                </>
+                            )}
+                            {!addresses.length && (
+                                <>
+                                    <p className="">
+                                        You dont have any addresses yet. Please
+                                        add one{" "}
+                                        <strong>
+                                            <Link
+                                                className="inline-link"
+                                                to="/addresses"
+                                            >
+                                                here
+                                            </Link>{" "}
+                                        </strong>
+                                        first.
+                                    </p>
+                                </>
+                            )}
                         </>
                     )}
+
                     <p className="cost-view">
                         Total:{" $"}
                         {predictedTotalCost && (
@@ -180,17 +206,13 @@ export default function Checkout() {
                     </p>
                 </>
             )}
-            {!addresses.length && (
+            {!user.id && (
                 <>
-                    <p className="">
-                        You dont have any addresses yet. Please add one{" "}
-                        <strong>
-                            <Link className="inline-link" to="/addresses">
-                                here
-                            </Link>{" "}
-                        </strong>
-                        first.
-                    </p>
+                    <div className="link-wrapper">
+                        <Link to={"/account"} className="inline-link">
+                            Please login or register with us here first.
+                        </Link>
+                    </div>
                 </>
             )}
             {checkedOut && orderId && (

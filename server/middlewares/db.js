@@ -1,7 +1,7 @@
 const spicedPg = require("spiced-pg");
 const db = spicedPg(
     process.env.DATABASE_URL ||
-        `postgres://werner:werner:werner@localhost:5432/onlineshop`
+        `postgres://postgres:postgres:postgres@localhost:5432/onlineshop`
 );
 
 exports.registerUser = (firstname, lastname, email, password) => {

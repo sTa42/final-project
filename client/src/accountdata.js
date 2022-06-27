@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
+import LoggedOutText from "./hooks/loggedOut-text";
 export default function AccountData() {
     const user = useSelector((state) => state.userReducer);
 
     return (
         <>
-            {user && (
+            <h1 className="headline">Data about yourself</h1>
+            {user.id ? (
                 <>
-                    <h1 className="headline">Data about yourself</h1>
                     <div className="user-data-container">
                         <div>
                             <h2>First Name</h2>
@@ -32,6 +33,8 @@ export default function AccountData() {
                         </div>
                     </div>
                 </>
+            ) : (
+                <LoggedOutText />
             )}
         </>
     );

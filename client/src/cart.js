@@ -7,9 +7,11 @@ import Button from "@mui/material/Button";
 import { emptyCart } from "./redux/cart/slice";
 import { useDispatch } from "react-redux";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import LoggedOutButton from "./hooks/loggedOut-button";
 
 export default function Cart() {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.userReducer);
     const cart = useSelector((state) => state.cartReducer);
     const [items, setItems] = useState([]);
     const history = useHistory();
@@ -50,14 +52,19 @@ export default function Cart() {
                     </div>
                     <div className="checkoutText">
                         {/* <Link to={"/cart/checkout"}>Go to checkout</Link> */}
-                        <Button
-                            variant="contained"
-                            onClick={() => {
-                                history.replace("/cart/checkout");
-                            }}
-                        >
-                            Go to checkout
-                        </Button>
+                        {user.id ? (
+                            <Button
+                                variant="contained"
+                                onClick={() => {
+                                    history.replace("/cart/checkout");
+                                }}
+                            >
+                                Go to checkout
+                            </Button>
+                        ) : (
+                            <LoggedOutButton />
+                        )}
+
                         <Button
                             variant="contained"
                             onClick={() => {
