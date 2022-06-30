@@ -68,7 +68,9 @@ This simplified online shop project was my final and self-chosen major project I
 
 
 ## **Preview**
-*to be added*
+![Project picture](https://raw.githubusercontent.com/sTa42/final-project/master/project_pictures/example_pic.png)
+### **live version**
+https://onlineshop-with-react.herokuapp.com/
 
 ## **Setup and start**
 - ### **Intall node modules**
